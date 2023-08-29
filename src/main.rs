@@ -10,14 +10,21 @@ use std::process::Command;
 #[command(version = "0.0")]
 #[command(about="Launches WinMerge to compare files between two directories", long_about=None)]
 struct Cli {
+    /// file path relative to the root project directories, e.g.,
+    /// Engine/Developer/NaniteBuilder/Private/Cluster.cpp
     file: String,
 
+    /// Left window root project directory to insert to the relative path of <FILE>
+    /// [Default = "D:\\UE5WorkTree\\UE5.2GPEGNanite"]
     #[arg(short, long)]
     left_root_dir: Option<String>,
 
+    /// Right window root project directory to insert to the relative path of <FILE>
+    /// [Default: "D:\\UE5WorkTree\\UE5.3Nanite"]
     #[arg(short, long)]
     right_root_dir: Option<String>,
 
+    /// show some debug/intermediate values
     #[arg(short, long)]
     verbose: bool,
 }
